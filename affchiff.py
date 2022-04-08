@@ -26,7 +26,8 @@ def decode(text):
     while textfilt:
         #kopiere ersten Buchstaben in temp
         temp = textfilt[:1]
-        #fügt ans Ende der Liste retlist die Zahl an, ord gibt temp als asci, asci -96 ist Zahl im Alphabet.
+        #fügt ans Ende der Liste retlist die Zahl an, ord gibt temp als ascii, ascii-wert abzuüglich 96 ist Zahl im Alphabet.
+        #Hier -97, da Zahlen nicht von 1-26 sondern von 0-25 angegeben werden sollen.
         retlist.append(ord(temp) - 97)
         #ersten Buchstaben von text löschen
         textfilt = textfilt[1:]
