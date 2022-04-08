@@ -1,8 +1,11 @@
 #Programm zur Ver- und Entschlüsselung von affinen Chiffren
 
 
-#Python Funktion "decode" erhält text und interpretiert die enthaltenen Buchstaben als Zahlen von 1-26.
-#Ignoriert werden alle Sonderzeichen.
+#Python Funktion "decode": 
+#   Erhält text und interpretiert die enthaltenen Buchstaben als Zahlen von 0-25.
+#   Ignoriert werden alle Leer- und Sonderzeichen.
+#   Alle Großgeschriebenen Buchstaben werden als kleine interpretiert
+#   ==> Gibt Liste mit Zahlenwerten zurück.
 def decode(text):
     #Liste für Rückgabe erstellen, String für gefilterten Text erstellen
     retlist = []
@@ -29,14 +32,37 @@ def decode(text):
         textfilt = textfilt[1:]
     #gibt retlist zurück
     return retlist
-    
 
 
-#einfacher test
+#Python Funktion "encode":
+#   Erhält Liste char_list und interpretiert die enthaltenen Zahlen von 0-25, als Kleinbuchstaben
+#   ==> Gibt String mit text zurück.
+def encode(char_list):
+    #def. String für Rückgabe
+    retstring = ''
+    #for-schleife x nimmt i-ten Wert aus char_list an
+    for x in char_list:
+        #retstring wird um den Charakter von (x + 97) als ASCII-Wert interpretiert erweitert.
+        retstring += chr(x+97)
+    #gebe retstring zurück
+    return retstring    
+
+
+#--TESTS:--
+#Test von decode wie in Aufgabenstellung:
+print('Test von "decode" mit: ')
 test = 'Hallo Welt!'
+print(test)
 print(decode(test))
-
-
-
+print('-----------------------------------------')
+#Test von decode mit schwerem String:
+print('Test von "decode" mit: ')
 testschwer = '# `P Ü h ||.R{ h'
+print(testschwer)
 print(decode(testschwer))
+print('-----------------------------------------')
+#Test von encode mit Aufgabenstellung:
+char_list = [13, 0, 2, 7, 17, 8, 2, 7, 19]
+print('Test von "encode" mit: ')
+print(char_list)
+print('Ergebnis: ' + encode(char_list))
