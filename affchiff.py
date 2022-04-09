@@ -78,16 +78,28 @@ key_table = {
 #   Fehler, falls mind. einer der Schlüssel ungültig. => Fehlermeldung wird ausgegeben, leerer String zurückgegeben.
 #   ==> Gibt String mit verschlüsseltem Text aus, bei Fehler leeren String.
 def acEncrypt(a, b , plain_text):
-    #String für return:
+    #String für return
     retstring = ''
-    #Liste um Zahlen zur Manipulation zu speichern.
+    #Liste um Zahlen zur Manipulation zu speichern. i für counter bei for-Schleife
     worklist = []
+    i = 0
     #Prüfen, ob beide Keys in key_table liegen (nur dann hat man gültiges Schlüsselpaar).
     if not((a in key_table) and (b in key_table)):
         #Wenn einer der beiden Keys ungültig, Fehlermeldung ausgeben und leeren String zurückgeben.
         print('FEHLER: mindestens einer der Keys im KEYPAIR ist ungültig!')
         return retstring
     #plain_text in liste von Zahlen umwandeln mit decode.
+    worklist = decode(plain_text)
+    #Worklist durchlaufen, wert immer in x speichern.
+    for x in worklist:
+        #Worklist an i-ter Stelle mit verschl. Text füllen.
+        worklist[i] = ((a*x + b) %26)
+        #i um 1 erhöhen.
+        i+=1 
+    #Worklist in text umwandeln mit encode.
+    retstring = encode(worklist)
+    #Return Retstring in großbuchstaben
+    return retstring.swapcase()
 
 
     
@@ -110,3 +122,10 @@ char_list = [13, 0, 2, 7, 17, 8, 2, 7, 19]
 print('Test von "encode" mit: ')
 print(char_list)
 print('Ergebnis: ' + encode(char_list))
+print('-----------------------------------------')
+#Test von acencrypt mit aufgabenstellung
+teststring = 'botschaft'
+print('Testen von acEncrypt mit : ' + teststring)
+a = 11 
+b = 23
+print('Ergebnis: ' + acEncrypt(a,b,teststring))
