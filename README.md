@@ -1,2 +1,3 @@
 # SP_1
-Paisn-Projekt
+paisn-project,
+but the s is silent.
