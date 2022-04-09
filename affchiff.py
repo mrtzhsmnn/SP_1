@@ -22,7 +22,6 @@ def decode(text):
         if (ord(x) >= 97 and ord(x) <= 122):
             #wenn kleinbuchstabe, an textfilt anhängen
             textfilt += x
-            
     #While Schleife, durchläuft Code bis String leer. Interpretiere hier String als bool, wenn String leer, String = false.
     while textfilt:
         #kopiere ersten Buchstaben in temp
@@ -128,7 +127,6 @@ def acDecrypt(a, b, cypher_text):
         i+=1 
     #Worklist mit Encode zu string umwandeln und zurückgeben.
     return encode(worklist)
-
 
 
 #HILFSFunktion "keyHelp":
