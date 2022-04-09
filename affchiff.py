@@ -1,6 +1,7 @@
 #Programm zur Ver- und Entschlüsselung von affinen Chiffren
 
 
+
 #Funktion "decode": 
 #   IN: Erwartet String text.
 #   Interpretiert die in text enthaltenen Buchstaben als Zahlen von 0-25.
@@ -34,6 +35,7 @@ def decode(text):
         textfilt = textfilt[1:]
     #gibt retlist zurück
     return retlist
+
 
 
 #Funktion "encode":
