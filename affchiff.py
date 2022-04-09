@@ -51,6 +51,7 @@ def encode(char_list):
     #gebe retstring zurück
     return retstring    
 
+
 #Dictionary mit a und der passenden inversen a^-1 in Z26
 #   Es werden nur a als Schlüssel akzeptiert für die a^-1 in Z26 liegt.
 #   Daher hier nur ausgewählte Paare.
@@ -100,9 +101,7 @@ def acEncrypt(a, b , plain_text):
     retstring = encode(worklist)
     #Return Retstring in großbuchstaben
     return retstring.swapcase()
-
-
-    
+   
 
 #--TESTS:--
 #Test von decode wie in Aufgabenstellung:
