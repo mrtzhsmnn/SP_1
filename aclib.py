@@ -1,12 +1,43 @@
-#Programm zur Ver- und Entschlüsselung von affinen Chiffren
+"""                 __PYTHON LIBRARY ACLIB__
+
+    FUNKTIONEN:
+        "decode": 
+            IN: Erwartet String text.
+            Interpretiert die in text enthaltenen Buchstaben als Zahlen von 0-25.
+            Ignoriert werden alle Leer- und Sonderzeichen.
+            Alle Großgeschriebenen Buchstaben werden als kleine interpretiert
+            ==> Gibt Liste mit Zahlenwerten zurück.
+        "encode":
+            IN: Erwartet Liste char_list.
+            Interpretiert die in char_list enthaltenen Zahlen von 0-25, als Kleinbuchstaben.
+            (Umkehrfunktion zu decode)
+            ==> Gibt String mit text zurück.
+        "acEncrypt":
+            IN: Erwartet Schlüssel a, und b, beide müssen in key_table sein.
+                Erwartet String plain_text mit dem zu verschlüsselnden Text.
+            Verschlüsselt plain_text mit dem Schlüsselpaar a & b.
+            Fehler, falls mind. einer der Schlüssel ungültig. => Fehlermeldung wird ausgegeben, leerer String zurückgegeben.
+            ==> Gibt String mit verschlüsseltem Text zurück (nur Großbuchstaben), bei Fehler leeren String.
+        "acDecrypt":
+            IN: Erwartet Schlüssel a, und b, beide müssen in key_table sein.
+                Erwartet String cypher_text mit dem zu entschlüsselnden Text.
+            Entschlüsselt cypher_text mit dem Schlüsselpaar a & b.
+            Fehler, falls mind. einer der Schlüssel ungültig. => Fehlermeldung wird ausgegeben, leerer String zurückgegeben.
+            ==> Gibt String mit entschlüsseltem Text zurück (nur Kleinbuchstaben), bei Fehler leeren String.
+        "keyHelp" (Hilfsfunktion):
+            IN: Erwartet String mit Schlüsselpaar z.b. 'db'.
+            Prüft und decoded Schlüsselpaar, PRÜFT NICHT AUF KORREKTHEIT DES SCHLÜSSELPAARS!
+            ==> Gibt zwei Zahlen a,b als Int zurück, beide Zahlen 27 wenn Fehler.
+    VARIABELN:
+        "key_table":
+            Dictionary mit a und der passenden inversen a^-1 in Z26
+            Es werden nur a als Schlüssel akzeptiert für die a^-1 in Z26 liegt.
+            Daher hier nur ausgewählte Paare.
+            ==>Paart a mit den inversen Elementen.
+""" 
 
 
-#Funktion "decode": 
-#   IN: Erwartet String text.
-#   Interpretiert die in text enthaltenen Buchstaben als Zahlen von 0-25.
-#   Ignoriert werden alle Leer- und Sonderzeichen.
-#   Alle Großgeschriebenen Buchstaben werden als kleine interpretiert
-#   ==> Gibt Liste mit Zahlenwerten zurück.
+
 def decode(text):
     #Liste für Rückgabe erstellen, String für gefilterten Text erstellen
     retlist = []
@@ -34,12 +65,6 @@ def decode(text):
     #gibt retlist zurück
     return retlist
 
-
-#Funktion "encode":
-#   IN: Erwartet Liste char_list.
-#   Interpretiert die in char_list enthaltenen Zahlen von 0-25, als Kleinbuchstaben.
-#   (Umkehrfunktion zu decode)
-#   ==> Gibt String mit text zurück.
 def encode(char_list):
     #def. String für Rückgabe
     retstring = ''
@@ -50,11 +75,6 @@ def encode(char_list):
     #gebe retstring zurück
     return retstring    
 
-
-#Dictionary mit a und der passenden inversen a^-1 in Z26
-#   Es werden nur a als Schlüssel akzeptiert für die a^-1 in Z26 liegt.
-#   Daher hier nur ausgewählte Paare.
-#   ==>Paart a mit den inversen Elementen.
 key_table = {
     1 : 1,
     3 : 9,
@@ -70,13 +90,6 @@ key_table = {
     25 : 25
 }
 
-
-#Funktion "acEncrypt":
-#   IN: Erwartet Schlüssel a, und b, beide müssen in key_table sein.
-#       Erwartet String plain_text mit dem zu verschlüsselnden Text.
-#   Verschlüsselt plain_text mit dem Schlüsselpaar a & b.
-#   Fehler, falls mind. einer der Schlüssel ungültig. => Fehlermeldung wird ausgegeben, leerer String zurückgegeben.
-#   ==> Gibt String mit verschlüsseltem Text zurück (nur Großbuchstaben), bei Fehler leeren String.
 def acEncrypt(a, b , plain_text):
     #String für return
     retstring = ''
@@ -100,14 +113,7 @@ def acEncrypt(a, b , plain_text):
     retstring = encode(worklist)
     #Return Retstring in großbuchstaben
     return retstring.swapcase()
-   
 
-#Funktion "acDecrypt":
-#   IN: Erwartet Schlüssel a, und b, beide müssen in key_table sein.
-#       Erwartet String cypher_text mit dem zu entschlüsselnden Text.
-#   Entschlüsselt cypher_text mit dem Schlüsselpaar a & b.
-#   Fehler, falls mind. einer der Schlüssel ungültig. => Fehlermeldung wird ausgegeben, leerer String zurückgegeben.
-#   ==> Gibt String mit entschlüsseltem Text zurück (nur Kleinbuchstaben), bei Fehler leeren String.
 def acDecrypt(a, b, cypher_text):
     #Liste um Zahlen zur Manipulation zu speichern. i für counter bei for-Schleife
     worklist = []
@@ -128,11 +134,6 @@ def acDecrypt(a, b, cypher_text):
     #Worklist mit Encode zu string umwandeln und zurückgeben.
     return encode(worklist)
 
-
-#HILFSFunktion "keyHelp":
-#   IN: Erwartet String mit Schlüsselpaar z.b. 'db'.
-#   Prüft und decoded Schlüsselpaar, PRÜFT NICHT AUF KORREKTHEIT DES SCHLÜSSELPAARS!
-#   ==> Gibt zwei Zahlen a,b als Int zurück, beide Zahlen 27 wenn Fehler.
 def keyHelp(key):
     #Sicherstellen, dass String tatsächlich nur 2 char enthält.
     if len(key) == 2 :
@@ -148,69 +149,3 @@ def keyHelp(key):
     else: 
         print('Der String ist entweder <2 oder >2 Zeichen. Ein keypair besteht aus 2 Zeichen.')
         return 27,27
-
-
-#------V E R M U T L I C H   O B S O L E T------
-#HILFSFunktion "exGCD"(
-#   IN: Erwartet a und b mit denene erw. Euklid. berechnet werden sollen.
-#   Berechnet rekursiv den erweiterten Euklidischen Algorithmus
-#   ==> Gibt als erste Variable die eigentliche Lösung, als zweite "x" und als letzte "y" aus. y mod Z ergibt dann das Inverse zu a 
-def exGCD(x, y):
-    #Abbruchbedingung:
-    if x == 0 :
-        #Rückgabe von dem Ergebnis, sowie von dem Inversen. 
-        return y,0,1
-    #Rekursion:
-    gcd,x1,y1 = exGCD(y%a, a)
-    #Update x und y mit den Resultaten aus der Rekursion:
-    x = y1 - (y//x) * x1
-    y = x1
-    return gcd,x,y
-
-
-#--TESTS_AUFGABENSTELLUNG:--
-#AUFG. 1: Test von decode wie in Aufgabenstellung:
-print('Test von "decode" mit: ')
-test = 'Hallo Welt!'
-print(test)
-print(decode(test))
-print('-----------------------------------------')
-#AUFG. 2: Test von encode mit Aufgabenstellung:
-char_list = [13, 0, 2, 7, 17, 8, 2, 7, 19]
-print('Test von "encode" mit: ')
-print(char_list)
-print('Ergebnis: ' + encode(char_list))
-print('-----------------------------------------')
-#AUFG. 4: Test von acEncrypt mit aufgabenstellung
-teststring = 'botschaft'
-print('Testen von acEncrypt mit : ' + teststring)
-a = 11 
-b = 23
-print('Ergebnis: ' + acEncrypt(a,b,teststring))
-print('-----------------------------------------')
-#AUFG. 5: Test von acDecrypt mit aufgabenstellung
-teststring = 'IVYNTWXAY'
-print('Testen von acDEcrypt mit : ' + teststring)
-print('Ergebnis: ' + acDecrypt(a,b,teststring))
-print('-----------------------------------------')
-#AUFG. 6: Test von acEncrypt und acDecrypt mit hilfsfunktion key_help:
-#A:
-teststring = 'strenggeheim'
-print('Testen von acEncrypt mit : ' + teststring)
-a,b=keyHelp('db')
-print('Ergebnis: ' + acEncrypt(a,b,teststring))
-print('-----------------------------------------')
-#B:
-teststring = 'IFFYVQMJYFFDQ'
-print('Testen von acDecrypt mit : ' + teststring)
-a,b=keyHelp('pi')
-print('Ergebnis: ' + acDecrypt(a,b,teststring))
-print('-----------------------------------------')
-print('-----------------------------------------')
-#--ANDERE_TESTS:--
-#Test von decode mit schwerem String:
-print('Test von "decode" mit: ')
-testschwer = '# `P Ü h ||.R{ h'
-print(testschwer)
-print(decode(testschwer))
-print('-----------------------------------------')
