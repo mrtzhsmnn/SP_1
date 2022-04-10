@@ -161,56 +161,64 @@ def exGCD(x, y):
         #Rückgabe von dem Ergebnis, sowie von dem Inversen. 
         return y,0,1
     #Rekursion:
-    gcd,x1,y1 = exGCD(y%a, a)
+    gcd,x1,y1 = exGCD(y%x, x)
     #Update x und y mit den Resultaten aus der Rekursion:
     x = y1 - (y//x) * x1
     y = x1
     return gcd,x,y
 
 
-#--TESTS_AUFGABENSTELLUNG:--
-#AUFG. 1: Test von decode wie in Aufgabenstellung:
-print('Test von "decode" mit: ')
-test = 'Hallo Welt!'
-print(test)
-print(decode(test))
-print('-----------------------------------------')
-#AUFG. 2: Test von encode mit Aufgabenstellung:
-char_list = [13, 0, 2, 7, 17, 8, 2, 7, 19]
-print('Test von "encode" mit: ')
-print(char_list)
-print('Ergebnis: ' + encode(char_list))
-print('-----------------------------------------')
-#AUFG. 4: Test von acEncrypt mit aufgabenstellung
-teststring = 'botschaft'
-print('Testen von acEncrypt mit : ' + teststring)
-a = 11 
-b = 23
-print('Ergebnis: ' + acEncrypt(a,b,teststring))
-print('-----------------------------------------')
-#AUFG. 5: Test von acDecrypt mit aufgabenstellung
-teststring = 'IVYNTWXAY'
-print('Testen von acDEcrypt mit : ' + teststring)
-print('Ergebnis: ' + acDecrypt(a,b,teststring))
-print('-----------------------------------------')
-#AUFG. 6: Test von acEncrypt und acDecrypt mit hilfsfunktion key_help:
-#A:
-teststring = 'strenggeheim'
-print('Testen von acEncrypt mit : ' + teststring)
-a,b=keyHelp('db')
-print('Ergebnis: ' + acEncrypt(a,b,teststring))
-print('-----------------------------------------')
-#B:
-teststring = 'IFFYVQMJYFFDQ'
-print('Testen von acDecrypt mit : ' + teststring)
-a,b=keyHelp('pi')
-print('Ergebnis: ' + acDecrypt(a,b,teststring))
-print('-----------------------------------------')
-print('-----------------------------------------')
-#--ANDERE_TESTS:--
-#Test von decode mit schwerem String:
-print('Test von "decode" mit: ')
-testschwer = '# `P Ü h ||.R{ h'
-print(testschwer)
-print(decode(testschwer))
-print('-----------------------------------------')
+#Main zum testen.
+def main():
+    #--TESTS_AUFGABENSTELLUNG:--
+    #AUFG. 1: Test von decode wie in Aufgabenstellung:
+    print('Test von "decode" mit: ')
+    test = 'Hallo Welt!'
+    print(test)
+    print(decode(test))
+    print('-----------------------------------------')
+    #AUFG. 2: Test von encode mit Aufgabenstellung:
+    char_list = [13, 0, 2, 7, 17, 8, 2, 7, 19]
+    print('Test von "encode" mit: ')
+    print(char_list)
+    print('Ergebnis: ' + encode(char_list))
+    print('-----------------------------------------')
+    #AUFG. 4: Test von acEncrypt mit aufgabenstellung
+    teststring = 'botschaft'
+    print('Testen von acEncrypt mit : ' + teststring)
+    a = 11 
+    b = 23
+    print('Ergebnis: ' + acEncrypt(a,b,teststring))
+    print('-----------------------------------------')
+    #AUFG. 5: Test von acDecrypt mit aufgabenstellung
+    teststring = 'IVYNTWXAY'
+    print('Testen von acDEcrypt mit : ' + teststring)
+    print('Ergebnis: ' + acDecrypt(a,b,teststring))
+    print('-----------------------------------------')
+    #AUFG. 6: Test von acEncrypt und acDecrypt mit hilfsfunktion key_help:
+    #A:
+    teststring = 'strenggeheim'
+    print('Testen von acEncrypt mit : ' + teststring)
+    a,b=keyHelp('db')
+    print('Ergebnis: ' + acEncrypt(a,b,teststring))
+    print('-----------------------------------------')
+    #B:
+    teststring = 'IFFYVQMJYFFDQ'
+    print('Testen von acDecrypt mit : ' + teststring)
+    a,b=keyHelp('pi')
+    print('Ergebnis: ' + acDecrypt(a,b,teststring))
+    print('-----------------------------------------')
+    print('-----------------------------------------')
+    #--ANDERE_TESTS:--
+    #Test von decode mit schwerem String:
+    print('Test von "decode" mit: ')
+    testschwer = '# `P Ü h ||.R{ h'
+    print(testschwer)
+    print(decode(testschwer))
+    print('-----------------------------------------')
+
+
+#Testen ob als skript gestartet:
+#macht man scheinbar so um das prog. von einer lib. zu unterscheiden.
+if __name__ == '__main__':
+    main()
