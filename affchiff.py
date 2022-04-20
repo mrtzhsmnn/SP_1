@@ -129,6 +129,22 @@ def acDecrypt(a, b, cypher_text):
     return encode(worklist)
 
 
+#Funktion "computeKeyPairs":
+#   IN: Erwartet char_list als Liste von Zahlen in Z26.
+#   Iteriert über char_list und berechnet die Paare (a,b) mit a!=b und a,b aus char_list.
+#   ==> Gibt Liste von Paaren (a,b) retpairlist zurück.
+def computeKeyPairs(char_list):
+    #Rückgabeliste
+    retpairlist = []
+    #Doppelte Iteration über char_list (für a,b)
+    for a in char_list:
+        for b in char_list:
+            #Prüfen, ob a!=b.
+            if (a != b):
+                retpairlist.append((a,b))
+    return retpairlist
+
+
 #HILFSFunktion "keyHelp":
 #   IN: Erwartet String mit Schlüsselpaar z.b. 'db'.
 #   Prüft und decoded Schlüsselpaar, PRÜFT NICHT AUF KORREKTHEIT DES SCHLÜSSELPAARS!
@@ -207,6 +223,14 @@ def main():
     print('Testen von acDecrypt mit : ' + teststring)
     a,b=keyHelp('pi')
     print('Ergebnis: ' + acDecrypt(a,b,teststring))
+    print('-----------------------------------------')
+    #AUFG. 14: Test von computeKeyPairs mit Aufgabenstellung:
+    testlist = [13,4,19]
+    print('Testen von computeKeyPairs mit : ')
+    print(testlist)
+    printlist = computeKeyPairs(testlist)
+    print('Ergebnis: ')
+    print(printlist)
     print('-----------------------------------------')
     print('-----------------------------------------')
     #--ANDERE_TESTS:--
