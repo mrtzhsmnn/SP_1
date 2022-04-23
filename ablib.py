@@ -1,4 +1,5 @@
-import aclib as ac
+import aclib as ac # Importiere aclib
+from collections import Counter # Counter() ist eine Klasse, die ein Dictionary erstellt
 
 """                 __PYTHON LIBRARY ABLIB__
 
@@ -35,25 +36,18 @@ def computeFrequencyTable(char_list):
     freq_table = {}
     #Zählt die Häufigkeit, der in "char_list" vorkommenden Zahlen und füllt das Dicitonary mit den Werten
     for items in char_list:
-        # lesbarere Variante, jedoch langsamer
         freq_table[items] = char_list.count(items) #count() gibt die Anzahl der Vorkommen der übergebenen Variable zurück
-        # oldschool Variante
-        # if char in freq_table:
-        #     freq_table[char] += 1
-        # else:
-        #     freq_table[char] = 1
     return freq_table # Gibt Dictionary mit den Häufigkeiten der Zahlen zurück
 def printFrequencyTable(freq_table):
     #TODO: key in Buchstaben umwandeln mit encode() statt manuell (Friedrich)
-    for key, value in freq_table.items():
+    for key, value in freq_table.items(): # Alle Items des Dictionaries durchlaufen
         # redundant, weil encode() diese Funktion bereits bietet, hat aber Fehler geworfen
         key = chr(key+97)
-        print(key, ' : ', value)
+        print(key, ' : ', value) # Ausgabe
 
 def computeMostFrequentChars(freq_table, n):
-    most_frequent = []
-    most_frequent.append(freq_table.items().most_common(n))
-    return most_frequent
+    most_frequent = Counter(freq_table).most_common(n) # most_common() gibt die n häufigsten Werte zurück, allerdings nur als Tupel
+    return [i[0] for i in most_frequent] # Tupel herausfiltern (i[0]) und nur die Zahlen zurückgeben
 
 
 #def computeKeyPairs(char_list):
