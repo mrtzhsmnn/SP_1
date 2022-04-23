@@ -52,7 +52,7 @@ def printFrequencyTable(freq_table):
 
 def computeMostFrequentChars(freq_table, n):
     most_frequent = []
-    
+    most_frequent.append(freq_table.items().most_common(n))
     return most_frequent
 
 

@@ -193,7 +193,7 @@ def exGCD(x, y):
 def main():
     #--TESTS_AUFGABENSTELLUNG:--
     #AUFG. 12: Test von computeFrequencyTable
-    testlist = [11, 0, 0, 17, 0, 0, 7, 17, 17, 8, 2, 2, 7, 19, 19, 1, 11, 15]
+    testlist = [11, 0, 0, 17, 0, 0, 7, 17, 17, 17, 17, 17, 8, 2, 2, 7, 19, 19, 1, 11, 15]
     print('Testen von computeFrequencyTable mit:')
     print(testlist)
     freq_table = ab.computeFrequencyTable(testlist)
@@ -205,7 +205,7 @@ def main():
     print('Testen von computeMostFrequentChars mit: n = ' + str(n))
     print('Ergebnis:')
     print(ab.computeMostFrequentChars(freq_table, n))
-    #TODO: Test für AUfg. 12/13 vor Abgabe löschen - Friedrich
+    #TODO: Test für Aufg. 12/13 vor Abgabe löschen - Friedrich
     print('-----------------------------------------')
     #AUFG. 1: Test von decode wie in Aufgabenstellung:
     print('Test von "decode" mit: ')
