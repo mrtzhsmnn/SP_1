@@ -7,6 +7,8 @@
 #   Ignoriert werden alle Leer- und Sonderzeichen.
 #   Alle Großgeschriebenen Buchstaben werden als kleine interpretiert
 #   ==> Gibt Liste mit Zahlenwerten zurück.
+
+
 def decode(text):
     #Liste für Rückgabe erstellen, String für gefilterten Text erstellen
     retlist = []
@@ -224,6 +226,14 @@ def main():
     a,b=keyHelp('pi')
     print('Ergebnis: ' + acDecrypt(a,b,teststring))
     print('-----------------------------------------')
+    #AUFG. 12: Test von computeFrequencyTable
+    print('Testen von computeFrequencyTable mit : ' + testlist)
+    testlist = [11, 0, 0, 17, 0, 0, 7, 17, 17, 8, 2, 2, 7, 19, 19, 1, 11, 15]
+    computeFrequencyTable(testlist)
+    print('Ergebnis: ' + printFrequencyTable(freq_table))
+    #TODO: Friedrich, print stuff
+    print('-----------------------------------------')
+
     #AUFG. 14: Test von computeKeyPairs mit Aufgabenstellung:
     testlist = [13,4,19]
     print('Testen von computeKeyPairs mit : ')

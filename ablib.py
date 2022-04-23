@@ -33,12 +33,20 @@
 #Hier kommen aufgabe 11, 12, 13, 14, 15 hinein
 
 def computeFrequencyTable(char_list):
-    #Liste für Rückgabe erstellen
-    
+    freq_table = {}
+    for char in char_list:
+        if char in freq_table:
+            freq_table[char] += 1
+        else:
+            freq_table[char] = 1
+    return freq_table
+    #Zählt die Häufigkeit, der in "char_list" vorkommenden Zahlen
+    #char_list.value_counts()
 
 def printFrequencyTable(freq_table):
     #Liste für Rückgabe erstellen
-
+    for key, value in freq_table.items():
+        print ("% d : % d"%(key, value))
 
 def computeMostFrequentChars(freq_table, n):
     #Liste für Rückgabe erstellen
@@ -50,5 +58,3 @@ def computeKeyPairs(char_list):
 
 def analyzeCipertext(cipher_text, char_pairs):
     #Liste für Rückgabe erstellen
-
-
