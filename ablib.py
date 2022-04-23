@@ -1,3 +1,5 @@
+import aclib as ac
+
 """                 __PYTHON LIBRARY ABLIB__
 
     FUNKTIONEN:
@@ -9,7 +11,7 @@
             IN: Ausgabe von computeFrequencyTable()
             Konvertiert die Zahlen der übergebenen Tabelle in Buchstaben und gibt sie wieder als Tabelle auf der Konsole aus.
             ==> Zahlen im von computeFrequencyTable() übergebenen Dictionary werden in Buchstaben konvertiert und als Tabelle ausgegeben
-        "computeMostFrequentChars":
+        "computeMostFrequentitems":
             IN: Erwartet: frequency_table, n 
             ==> Gibt Liste mit den n häufigsten Zahlen aus
         "computeKeyPairs":
@@ -26,35 +28,32 @@
 """ 
 
 
-
-
-
-
 #Hier kommen aufgabe 11, 12, 13, 14, 15 hinein
 
 def computeFrequencyTable(char_list):
+    # Erstelle leeres Dictionary
     freq_table = {}
-    for char in char_list:
-        if char in freq_table:
-            freq_table[char] += 1
-        else:
-            freq_table[char] = 1
-    return freq_table
-    #Zählt die Häufigkeit, der in "char_list" vorkommenden Zahlen
-    #char_list.value_counts()
-
+    #Zählt die Häufigkeit, der in "char_list" vorkommenden Zahlen und füllt das Dicitonary mit den Werten
+    for items in char_list:
+        # lesbarere Variante, jedoch langsamer
+        freq_table[items] = char_list.count(items) #count() gibt die Anzahl der Vorkommen der übergebenen Variable zurück
+        # oldschool Variante
+        # if char in freq_table:
+        #     freq_table[char] += 1
+        # else:
+        #     freq_table[char] = 1
+    return freq_table # Gibt Dictionary mit den Häufigkeiten der Zahlen zurück
 def printFrequencyTable(freq_table):
-    #Liste für Rückgabe erstellen
+    #TODO: key in Buchstaben umwandeln mit encode() statt manuell (Friedrich)
     for key, value in freq_table.items():
-        print ("% d : % d"%(key, value))
+        # redundant, weil encode() diese Funktion bereits bietet, hat aber Fehler geworfen
+        key = chr(key+97)
+        print(key, ' : ', value)
 
-def computeMostFrequentChars(freq_table, n):
-    #Liste für Rückgabe erstellen
-
-
-def computeKeyPairs(char_list):
-    #Liste für Rückgabe erstellen
+#def computeMostFrequentchars(freq_table, n):
 
 
-def analyzeCipertext(cipher_text, char_pairs):
-    #Liste für Rückgabe erstellen
+#def computeKeyPairs(char_list):
+
+
+#def analyzeCipertext(cipher_text, char_pairs):
