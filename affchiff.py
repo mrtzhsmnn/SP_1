@@ -199,7 +199,13 @@ def main():
     freq_table = ab.computeFrequencyTable(testlist)
     print('Ergebnis:')
     ab.printFrequencyTable(freq_table)
-    #TODO: Friedrich, print stuff
+    print('-----------------------------------------')
+    #TODO: Test für AUfg. 12/13 vor Abgabe löschen - Friedrich
+    #AUFG. 13: Test von computeMostFrequentChars
+    n = 5
+    print('Testen von computeMostFrequentChars mit: n = ' + str(n))
+    print('Ergebnis:')
+    print(ab.computeMostFrequentChars(freq_table, n))
     print('-----------------------------------------')
     #AUFG. 1: Test von decode wie in Aufgabenstellung:
     print('Test von "decode" mit: ')

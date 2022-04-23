@@ -11,7 +11,7 @@ import aclib as ac
             IN: Ausgabe von computeFrequencyTable()
             Konvertiert die Zahlen der übergebenen Tabelle in Buchstaben und gibt sie wieder als Tabelle auf der Konsole aus.
             ==> Zahlen im von computeFrequencyTable() übergebenen Dictionary werden in Buchstaben konvertiert und als Tabelle ausgegeben
-        "computeMostFrequentitems":
+        "computeMostFrequentChars":
             IN: Erwartet: frequency_table, n 
             ==> Gibt Liste mit den n häufigsten Zahlen aus
         "computeKeyPairs":
@@ -50,7 +50,10 @@ def printFrequencyTable(freq_table):
         key = chr(key+97)
         print(key, ' : ', value)
 
-#def computeMostFrequentchars(freq_table, n):
+def computeMostFrequentChars(freq_table, n):
+    most_frequent = []
+    
+    return most_frequent
 
 
 #def computeKeyPairs(char_list):
