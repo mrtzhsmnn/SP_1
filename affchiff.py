@@ -1,6 +1,5 @@
 # import von ablib, nicht Teil der Aufgabe!
 # TODO: import löschen vor Abgabe
-#TODO: bitches mitbringen
 import ablib as ab
 #Programm zur Ver- und Entschlüsselung von affinen Chiffren
 
