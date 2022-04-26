@@ -42,7 +42,7 @@ def printFrequencyTable(freq_table):
     #TODO: key in Buchstaben umwandeln mit encode() statt manuell (Friedrich)
     for key, value in freq_table.items(): # Alle Items des Dictionaries durchlaufen
         # redundant, weil encode() diese Funktion bereits bietet, hat aber Fehler geworfen
-        key = chr(key+97)
+        key = chr(key+97) #TODO: Fehlerfälle abfangen, optimieren, evtl. encode nutzen
         print(key, ' : ', value) # Ausgabe
 
 def computeMostFrequentChars(freq_table, n):
