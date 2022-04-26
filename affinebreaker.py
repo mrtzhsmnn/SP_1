@@ -4,6 +4,7 @@ import sys
 import os
 
 print("cock")
+
 datei=open(sys.argv[1],"r")
 
 print (ab.computeFrequencyTable(datei))
@@ -16,5 +17,6 @@ ab.analyzeCyphertext(datei,ab.computeKeyPairs(datei))
 
 datei.close()
 
+print("pussy")
 
 
