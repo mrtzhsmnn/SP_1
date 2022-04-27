@@ -3,22 +3,15 @@ import aclib as ac
 import sys
 import os
 
-i=1
-try:
-    while i<=3:
-        if(sys.argv[i] is None): #Wenn kein Argument an Stelle i übergeben wurde
-            print("Zu wenige Parameter angegeben!") #Fehlermeldung, wenn zu wenige Parameter angegeben wurden.
-            sys.exit() #Programm beenden
-        i+=1 #i um 1 erhöhen, um nicht in endlosschleife zu gelangen.
+try: 
+    mode=sys.argv[1] #Variablen zuweisen (Ver-/Entschlüsseln)
+    key=sys.argv[2]  #Variablen zuweisen (Schlüssel)
+    path=sys.argv[3] #Variablen zuweisen (Dateipfad)
 except: #Error handling
     print("Zu wenige Parameter angegeben!")  #Fehlermeldung, wenn zu wenige Parameter angegeben wurden.
     sys.exit() #Programm beenden 
 
-mode=sys.argv[1] #Variablen zuweisen (Ver-/Entschlüsseln)
-key=sys.argv[2]  #Variablen zuweisen (Schlüssel)
-path=sys.argv[3] #Variablen zuweisen (Dateipfad)
-a,b=ac.keyHelp(key) #Key in a und b speichern
-print (a,b)
+a,b=ac.keyHelp(key) #Key wird in Keyhelp-Funktion zerlegt und in a und b gespeichert
 
 if(mode!='e' and mode!='d'): #Prüfung ob mode gültig ist   
     print("Kein gültiger Modus!") #Fehlermeldung ausgeben
@@ -31,17 +24,25 @@ except: #Wenn Datei nicht existiert
     sys.exit() #Programm beenden
 
 if(mode == 'e'): #Wenn mode "e" ist (verschlüsseln)
-    newContent=ac.acEncrypt(a,b,datei.read()) #Neuer Inhalt der Datei mit acEncrypt 
+    newContent=ac.acEncrypt(a,b,datei.read()) #Neuer Inhalt der Datei mit acEncrypt
     datei.close() #Datei schließen
-    os.remove(path) #Datei löschen
-    datei=open(path, "w+")
-    datei.write(newContent) #verschlüsselter Inhalt wird in Datei geschrieben
+    if(newContent==""):
+        sys.exit() #Programm beenden    
+    else:
+        os.remove(path) #Datei löschen
+        datei=open(path, "w+")
+        datei.write(newContent) #verschlüsselter Inhalt wird in Datei geschrieben
+        print("Datei wurde verschlüsselt!") #Meldung ausgeben
 elif(mode == 'd'): #Wenn mode "d" ist (entschlüsseln)
     newContent=ac.acDecrypt(a,b,datei.read()) #Neuer Inhalt der Datei mit acDecrypt
     datei.close() #Datei schließen
-    os.remove(path) #Datei löschen  
-    datei=open(path, "w+")
-    datei.write(newContent) #entschlüsselter Inhalt wird in Datei geschrieben
+    if(newContent==""):
+        sys.exit() #Programm beenden
+    else:
+        os.remove(path) #Datei löschen  
+        datei=open(path, "w+")
+        datei.write(newContent) #entschlüsselter Inhalt wird in Datei geschrieben
+        print("Datei wurde entschlüsselt!") #Meldung ausgeben
 datei.close() #Datei schließen
 
 
