@@ -53,17 +53,17 @@ def computeMostFrequentChars(freq_table, n):
 #Funktion "computeKeyPairs":
 #   IN: Erwartet char_list als Liste von Zahlen in Z26.
 #   Iteriert über char_list und berechnet die Paare (a,b) mit a!=b und a,b aus char_list.
-#   ==> Gibt Liste von Paaren (a,b) retpairlist zurück.
+#   ==> Gibt Liste von Paaren (a,b) char_pairs zurück.
 def computeKeyPairs(char_list):
     #Rückgabeliste
-    retpairlist = []
+    char_pairs = []
     #Doppelte Iteration über char_list (für a,b)
     for a in char_list:
         for b in char_list:
             #Prüfen, ob a!=b.
             if (a != b):
-                retpairlist.append((a,b))
-    return retpairlist
+                char_pairs.append((a,b))
+    return char_pairs
 
 
 #def analyzeCipertext(cipher_text, char_pairs):
