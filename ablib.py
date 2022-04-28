@@ -74,13 +74,14 @@ def analyzeCypherText(cypher_text, char_pairs):
     # Iteriere über alle Paare (cE,cN)
     for cE, cN in char_pairs:
         # Berechne a,b
-        a = x * (cE - cN)
-        b = cE - y * a
+        a = # dumm dumm
+        b = # dumm dumm nr 2
         # if ( gcd(a,26) != 1 or b > 26 ) or "text nicht lesbar, lol":
         #    # Entschlüsselung nicht möglich
         # else:
-        #    # Entschlüsselung möglich
-    # wandle entschlüsselten Text wieder in Buchstaben um
-    plain_text = [chr(i+97) for i in plain_list]
+        #    # do something
+
+    # entschlüssle text mit gefunden keys
+    plain_text = ac.acDecrypt(a, b, cypher_text)
     print(plain_text[:50])
 # Erklärung zu char_pairs: Liste mit den Buchstaben in Form von Zahlen (0-25) und deren Häufigkeit im deutschen Alphabet.
