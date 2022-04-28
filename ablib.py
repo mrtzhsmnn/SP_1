@@ -48,6 +48,7 @@ def printFrequencyTable(freq_table):
 
 def computeMostFrequentChars(freq_table, n):
     most_frequent = Counter(freq_table).most_common(n) # most_common() gibt die n häufigsten Werte zurück, allerdings nur als Tupel
+    #TODO: wandle most frequent in zahlen um
     return [i[0] for i in most_frequent] # Tupel herausfiltern (i[0]) und nur die Zahlen zurückgeben
 
 
