@@ -69,16 +69,18 @@ def computeKeyPairs(char_list):
 
 def analyzeCypherText(cypher_text, char_pairs):
     # wandle den Geheimtext in eine Liste von Zahlen um
-    cypher_text = 
+    # cypher_list = [ord(i) for i in cypher_text] ... oder so ähnlich
+
     # Iteriere über alle Paare (cE,cN)
     for cE, cN in char_pairs:
         # Berechne a,b
-        a = #formel
-        b = #formel
+        a = x * (cE - cN)
+        b = cE - y * a
         # if ( gcd(a,26) != 1 or b > 26 ) or "text nicht lesbar, lol":
         #    # Entschlüsselung nicht möglich
         # else:
         #    # Entschlüsselung möglich
-
-        print(plain_text[:50])
+    # wandle entschlüsselten Text wieder in Buchstaben um
+    plain_text = [chr(i+97) for i in plain_list]
+    print(plain_text[:50])
 # Erklärung zu char_pairs: Liste mit den Buchstaben in Form von Zahlen (0-25) und deren Häufigkeit im deutschen Alphabet.
