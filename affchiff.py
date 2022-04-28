@@ -109,11 +109,11 @@ def acEncrypt(a, b , plain_text):
 
 #Funktion "acDecrypt":
 #   IN: Erwartet Schlüssel a, und b, beide müssen in key_table sein.
-#       Erwartet String cypher_text mit dem zu entschlüsselnden Text.
-#   Entschlüsselt cypher_text mit dem Schlüsselpaar a & b.
+#       Erwartet String cipher_text mit dem zu entschlüsselnden Text.
+#   Entschlüsselt cipher_text mit dem Schlüsselpaar a & b.
 #   Fehler, falls mind. einer der Schlüssel ungültig. => Fehlermeldung wird ausgegeben, leerer String zurückgegeben.
 #   ==> Gibt String mit entschlüsseltem Text zurück (nur Kleinbuchstaben), bei Fehler leeren String.
-def acDecrypt(a, b, cypher_text):
+def acDecrypt(a, b, cipher_text):
     #Liste um Zahlen zur Manipulation zu speichern. i für counter bei for-Schleife
     worklist = []
     i = 0
@@ -122,8 +122,8 @@ def acDecrypt(a, b, cypher_text):
         #Wenn einer der beiden Keys ungültig, Fehlermeldung ausgeben und leeren String zurückgeben.
         print('FEHLER: mindestens einer der Keys im KEYPAIR ist ungültig!')
         return ''
-    #cypher_text in Liste von Zahlen umwandeln mit decode.
-    worklist = decode(cypher_text)
+    #cipher_text in Liste von Zahlen umwandeln mit decode.
+    worklist = decode(cipher_text)
     #Worklist durchlaufen, wert immer in x speichern.
     for x in worklist:
         #Worklist an i-ter Stelle mit entschl. Text füllen. Formel siehe Aufgabenstellung Inverses zu a ist in key_table

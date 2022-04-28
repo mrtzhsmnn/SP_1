@@ -67,4 +67,6 @@ def computeKeyPairs(char_list):
 
 
 #def analyzeCipertext(cipher_text, char_pairs):
-    # 
+    # analyse
+    # entschlüsseln mit gefundenenm Schlüsselpaar
+    ac.acDecrypt(a, b, cypher_text)
