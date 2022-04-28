@@ -1,5 +1,6 @@
 import aclib as ac # Importiere aclib
 from collections import Counter # Counter() ist eine Klasse, die ein Dictionary erstellt
+from math import gcd
 
 """                 __PYTHON LIBRARY ABLIB__
 
@@ -65,8 +66,18 @@ def computeKeyPairs(char_list):
                 char_pairs.append((a,b))
     return char_pairs
 
+def analyzeCypherText(cypher_text, char_pairs):
+    # wandle den Geheimtext in eine Liste von Zahlen um
+    cypher_text = 
+    # Iteriere über alle Paare (cE,cN)
+    for cE, cN in char_pairs:
+        # Berechne a,b
+        a = #formel
+        b = #formel
+        # if gcd(a,26) != 1 or "text nicht lesbar, lol":
+        #    # Entschlüsselung nicht möglich
+        # else:
+        #    # Entschlüsselung möglich
 
-#def analyzeCipertext(cipher_text, char_pairs):
-    # analyse
-    # entschlüsseln mit gefundenenm Schlüsselpaar
-    ac.acDecrypt(a, b, cypher_text)
+        print(plain_text[:50])
+# Erklärung zu char_pairs: Liste mit den Buchstaben in Form von Zahlen (0-25) und deren Häufigkeit im deutschen Alphabet.
