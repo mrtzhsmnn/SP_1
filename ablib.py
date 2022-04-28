@@ -67,8 +67,9 @@ def computeKeyPairs(char_list):
     return char_pairs
 
 def analyzeCypherText(cypher_text, char_pairs):
+    #wandle char_pairs in zahlen in z26 um
+    char_pairs = [(ord(i[0])-97, ord(i[1])-97) for i in char_pairs]
     for cE, cN in char_pairs:
-        # Berechne a,b
         a = (3 * (cE - cN))%26
         b = (cE - (4 * a))%26
         if gcd(a,26) != 1 or b > 26:
