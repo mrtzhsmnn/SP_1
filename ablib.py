@@ -1,6 +1,7 @@
 import aclib as ac # Importiere aclib
 from collections import Counter # Counter() ist eine Klasse, die ein Dictionary erstellt
 from math import gcd
+import cryptography
 
 """                 __PYTHON LIBRARY ABLIB__
 
@@ -74,7 +75,7 @@ def analyzeCypherText(cypher_text, char_pairs):
         # Berechne a,b
         a = #formel
         b = #formel
-        # if gcd(a,26) != 1 or "text nicht lesbar, lol":
+        # if ( gcd(a,26) != 1 or b > 26 ) or "text nicht lesbar, lol":
         #    # Entschlüsselung nicht möglich
         # else:
         #    # Entschlüsselung möglich
