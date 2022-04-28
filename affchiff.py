@@ -176,20 +176,16 @@ def exGCD(x, y):
 #Main zum testen.
 def main():
     #--TESTS_AUFGABENSTELLUNG:--
-    #AUFG. 12: Test von computeFrequencyTable
-    testlist = [11, 0, 0, 17, 0, 0, 7, 17, 17, 17, 17, 17, 8, 2, 2, 7, 19, 19, 1, 11, 15]
-    print('Testen von computeFrequencyTable mit:')
-    print(testlist)
-    freq_table = ab.computeFrequencyTable(testlist)
-    print('Ergebnis:')
-    ab.printFrequencyTable(freq_table)
-    print('-----------------------------------------')
-    #AUFG. 13: Test von computeMostFrequentChars
-    n = 5
-    print('Testen von computeMostFrequentChars mit: n = ' + str(n))
-    print('Ergebnis:')
-    print(ab.computeMostFrequentChars(freq_table, n))
-    #TODO: Test für Aufg. 12/13 vor Abgabe löschen - Friedrich
+    #AUFG. 15: Test von analyzeCipherTexte
+    extext = "herrpimmelberger"
+    extextcipher = acEncrypt(1, 3, extext)
+    print('Testen von analyzeCipherText')
+    print(extextcipher)
+    freq_table = ab.computeFrequencyTable(extextcipher)
+    most_frequent = ab.computeMostFrequentChars(freq_table, 2)
+    char_pairs = ab.computeKeyPairs(most_frequent)
+    extexttest = ab.analyzeCypherText(extext, char_pairs)
+    print(extexttest)
     print('-----------------------------------------')
     #AUFG. 1: Test von decode wie in Aufgabenstellung:
     print('Test von "decode" mit: ')
@@ -232,7 +228,7 @@ def main():
     testlist = [13,4,19]
     print('Testen von computeKeyPairs mit : ')
     print(testlist)
-    printlist = computeKeyPairs(testlist)
+    printlist = ab.computeKeyPairs(testlist)
     print('Ergebnis: ')
     print(printlist)
     print('-----------------------------------------')
