@@ -2,7 +2,7 @@
 import aclib as ac
 import sys
 import os
-import time
+
 
 try: 
     mode=sys.argv[1] #Variablen zuweisen (Ver-/Entschlüsseln)
@@ -10,7 +10,6 @@ try:
     path=sys.argv[3] #Variablen zuweisen (Dateipfad)
 except: #Error handling
     print("Zu wenige Parameter angegeben!")  #Fehlermeldung, wenn zu wenige Parameter angegeben wurden.
-    time.sleep(30) #Pause, damit der Fehler sichtbar ist ///TODO: Elegantere lösung
     sys.exit() #Programm beenden 
 
 a,b=ac.keyHelp(key) #Key wird in Keyhelp-Funktion zerlegt und in a und b gespeichert
