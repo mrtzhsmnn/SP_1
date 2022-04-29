@@ -79,7 +79,7 @@ def analyzeCipherText(cipher_text, char_pairs):
             print('Mögliches Ergebnis: ')
             plain_text = ac.acDecrypt(a, b, cipher_text)
             # gib die ersten 50 Zeichen von plain_text aus
-            print(plain_text)
+            print(plain_text[:50])
             print('\n')
         # if gcd(a,26) != 1:
         #     print("scheisse geht nicht (" + str(a) + "," + str(b) + ")")
