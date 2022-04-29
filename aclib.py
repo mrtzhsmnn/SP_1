@@ -97,7 +97,7 @@ def acEncrypt(a, b , plain_text):
     worklist = []
     i = 0
     #Prüfen, ob beide Keys in key_table liegen (nur dann hat man gültiges Schlüsselpaar).
-    if not(a in key_table):
+    if not(a in key_table and (b<26 and b>=0)):
         #Wenn einer der beiden Keys ungültig, Fehlermeldung ausgeben und leeren String zurückgeben.
         print('FEHLER: mindestens einer der Keys im KEYPAIR ist ungültig!')
         return retstring
@@ -119,7 +119,7 @@ def acDecrypt(a, b, cypher_text):
     worklist = []
     i = 0
     #Prüfen, ob beide Keys in key_table liegen (nur dann hat man gültiges Schlüsselpaar).
-    if not(a in key_table):
+    if not(a in key_table and (b<26 and b>=0)):
         #Wenn einer der beiden Keys ungültig, Fehlermeldung ausgeben und leeren String zurückgeben.
         print('FEHLER: mindestens einer der Keys im KEYPAIR ist ungültig!')
         return ''
