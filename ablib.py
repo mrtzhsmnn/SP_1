@@ -66,15 +66,17 @@ def computeKeyPairs(char_list):
                 char_pairs.append((a,b))
     return char_pairs
 
-def analyzeCipherText(cypher_text, char_pairs):
+def analyzeCipherText(cipher_text, char_pairs):
     for cE, cN in char_pairs:
-        a = (3 * (cE - cN))%26
-        b = (cE - (4 * a))%26
-        if gcd(a,26) != 1 or b > 26:
-            print("scheisse geht nicht (" + str(a) + "," + str(b) + ")")
-        else:
-            plain_text = ac.acDecrypt(a, b, cypher_text)
-            print(plain_text[:50])
+        a = (3 * (cE - cN)) % 26
+        b = (cE - (4 * a)) % 26
+        plain_text = ac.acDecrypt(a, b, cipher_text)
+        print(plain_text)
+        # if gcd(a,26) != 1:
+        #     print("scheisse geht nicht (" + str(a) + "," + str(b) + ")")
+        # else:
+        #     plain_text = ac.acDecrypt(a, b, cipher_text)
+        #     print(plain_text[:50])
     return print("fertig")
     
     # entschlüssle text mit gefundenen keys

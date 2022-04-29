@@ -89,7 +89,7 @@ def acEncrypt(a, b , plain_text):
     worklist = []
     i = 0
     #Prüfen, ob beide Keys in key_table liegen (nur dann hat man gültiges Schlüsselpaar).
-    if not((a in key_table) and (b in key_table)):
+    if not(a in key_table):
         #Wenn einer der beiden Keys ungültig, Fehlermeldung ausgeben und leeren String zurückgeben.
         print('FEHLER: mindestens einer der Keys im KEYPAIR ist ungültig!')
         return retstring
@@ -118,7 +118,7 @@ def acDecrypt(a, b, cipher_text):
     worklist = []
     i = 0
     #Prüfen, ob beide Keys in key_table liegen (nur dann hat man gültiges Schlüsselpaar).
-    if not((a in key_table) and (b in key_table)):
+    if not(a in key_table):
         #Wenn einer der beiden Keys ungültig, Fehlermeldung ausgeben und leeren String zurückgeben.
         print('FEHLER: mindestens einer der Keys im KEYPAIR ist ungültig!')
         return ''
@@ -177,10 +177,22 @@ def exGCD(x, y):
 def main():
     #--TESTS_AUFGABENSTELLUNG:--
     #AUFG. 15: Test von analyzeCipherTexte
-    #Beispieltext aus Aufgabe 15, verschlüsselt mit (h,i)
-    extextcipher = "VQUYTTQLUWRQTTHUQGFUQLDUHGWRNEUGGUNELSGDUHTYRHULXUQVQUGUMDUHTYRHULCQHVVUHONYHFUBFXEWRGFYXUTEUHXEWRGFYXULYWRUQLUHXUGFQMMFULMYFRUMYFQGWRULTKHMUNDUHGWRNEUGGUNFVQUYTTQLUWRQTTHUNYUGGFGQWRZCYHKRLUSHKUGZUHULYETCYLVXUHUWRLULVYTEUHQGFGQUYNNUHVQLSGLQWRFXUGKLVUHGGQWRUHUQLUHGUQFGSQXFUGLEHUQLUXUSHULZFUYLZYRNSURUQMUHGWRNEUGGUNGKVYGGVQUGUYNNUVEHWRJHKXQUHFCUHVULOKULLULYLVUHUHGUQFGOYLLVUHSURUQMFUBFULFGWRNEUGGUNFCUHVULGKXYNVVQUDUHGWRNEUGGUNELSDKLLEHZCUQZUQWRULXUOYLLFQGF"
-    print('Testen von analyzeCipherText')
+    #Beispieltext aus Aufgabe 15, verschlüsselt mit (h,i) ... angeblich, lel
+    print('Klartext: ')
+    klartext = "ICHFINDEDEINEOMAGANZTOLLUNDMOECHTESIEGERNENAEHERKENNENLERNENUNDEVENTUELLKOENNTEMANDANNUEBERDASERBESPRECHENODERSO"
+    print(klartext)
+    extextcipher = acEncrypt(3,5,klartext)
+    print('Verschlüsselter Text mit 3 und 5: ')
     print(extextcipher)
+    #extextcipher = "VQUYTTQLUWRQTTHUQGFUQLDUHGWRNEUGGUNELSGDUHTYRHULXUQVQUGUMDUHTYRHULCQHVVUHONYHFUBFXEWRGFYXUTEUHXEWRGFYXULYWRUQLUHXUGFQMMFULMYFRUMYFQGWRULTKHMUNDUHGWRNEUGGUNFVQUYTTQLUWRQTTHUNYUGGFGQWRZCYHKRLUSHKUGZUHULYETCYLVXUHUWRLULVYTEUHQGFGQUYNNUHVQLSGLQWRFXUGKLVUHGGQWRUHUQLUHGUQFGSQXFUGLEHUQLUXUSHULZFUYLZYRNSURUQMUHGWRNEUGGUNGKVYGGVQUGUYNNUVEHWRJHKXQUHFCUHVULOKULLULYLVUHUHGUQFGOYLLVUHSURUQMFUBFULFGWRNEUGGUNFCUHVULGKXYNVVQUDUHGWRNEUGGUNELSDKLLEHZCUQZUQWRULXUOYLLFQGF"
+    print('Testen von analyzeCipherText')
+    print('-----------------------------------------')
+    print('Entschlüsselung mit bekannten keys (3 und 5): ')
+    print('Entschlüsselt: ')
+    extextprint = acDecrypt(3, 5, extextcipher)
+    print(extextprint)
+    print('-----------------------------------------')
+    print('Test des affineBreakers: ')
     # Text in Zahlen umwandeln (muss im Test gemacht werden, weil in der Aufgabe Zahlen in char_list erwartet werden, keine Buchstaben)
     extextlist = decode(extextcipher)
     freq_table = ab.computeFrequencyTable(extextlist)
@@ -188,68 +200,68 @@ def main():
     print(freq_table)
     print('Frequenztabelle (mit buchstaben): ')
     ab.printFrequencyTable(freq_table)
-    most_frequent = ab.computeMostFrequentChars(freq_table, 5)
+    most_frequent = ab.computeMostFrequentChars(freq_table, 4)
     print('Häufigste Zahlen: ')
     print(most_frequent)
     char_pairs = ab.computeKeyPairs(most_frequent)
     print('Zahlenpaare: ')
     print(char_pairs)
     print('Ergebnis: ')
-    ab.analyzeCipherText(extextlist, char_pairs)
+    ab.analyzeCipherText(extextcipher, char_pairs)
     print('-----------------------------------------')
-    #AUFG. 1: Test von decode wie in Aufgabenstellung:
-    print('Test von "decode" mit: ')
-    test = 'Hallo Welt!'
-    print(test)
-    print(decode(test))
-    print('-----------------------------------------')
-    #AUFG. 2: Test von encode mit Aufgabenstellung:
-    char_list = [13, 0, 2, 7, 17, 8, 2, 7, 19]
-    print('Test von "encode" mit: ')
-    print(char_list)
-    print('Ergebnis: ' + encode(char_list))
-    print('-----------------------------------------')
-    #AUFG. 4: Test von acEncrypt mit aufgabenstellung
-    teststring = 'botschaft'
-    print('Testen von acEncrypt mit : ' + teststring)
-    a = 11 
-    b = 23
-    print('Ergebnis: ' + acEncrypt(a,b,teststring))
-    print('-----------------------------------------')
-    #AUFG. 5: Test von acDecrypt mit aufgabenstellung
-    teststring = 'IVYNTWXAY'
-    print('Testen von acDEcrypt mit : ' + teststring)
-    print('Ergebnis: ' + acDecrypt(a,b,teststring))
-    print('-----------------------------------------')
-    #AUFG. 6: Test von acEncrypt und acDecrypt mit hilfsfunktion key_help:
-    #A:
-    teststring = 'strenggeheim'
-    print('Testen von acEncrypt mit : ' + teststring)
-    a,b=keyHelp('db')
-    print('Ergebnis: ' + acEncrypt(a,b,teststring))
-    print('-----------------------------------------')
-    #B:
-    teststring = 'IFFYVQMJYFFDQ'
-    print('Testen von acDecrypt mit : ' + teststring)
-    a,b=keyHelp('pi')
-    print('Ergebnis: ' + acDecrypt(a,b,teststring))
-    print('-----------------------------------------')
-    #AUFG. 14: Test von computeKeyPairs mit Aufgabenstellung:
-    testlist = [13,4,19]
-    print('Testen von computeKeyPairs mit : ')
-    print(testlist)
-    printlist = ab.computeKeyPairs(testlist)
-    print('Ergebnis: ')
-    print(printlist)
-    print('-----------------------------------------')
-    print('-----------------------------------------')
-    #--ANDERE_TESTS:--
-    #Test von decode mit schwerem String:
-    print('Test von "decode" mit: ')
-    testschwer = '# `P Ü h ||.R{ h'
-    print(testschwer)
-    print(decode(testschwer))
-    print('-----------------------------------------')
+    # #AUFG. 1: Test von decode wie in Aufgabenstellung:
+    # print('Test von "decode" mit: ')
+    # test = 'Hallo Welt!'
+    # print(test)
+    # print(decode(test))
+    # print('-----------------------------------------')
+    # #AUFG. 2: Test von encode mit Aufgabenstellung:
+    # char_list = [13, 0, 2, 7, 17, 8, 2, 7, 19]
+    # print('Test von "encode" mit: ')
+    # print(char_list)
+    # print('Ergebnis: ' + encode(char_list))
+    # print('-----------------------------------------')
+    # #AUFG. 4: Test von acEncrypt mit aufgabenstellung
+    # teststring = 'botschaft'
+    # print('Testen von acEncrypt mit : ' + teststring)
+    # a = 11 
+    # b = 23
+    # print('Ergebnis: ' + acEncrypt(a,b,teststring))
+    # print('-----------------------------------------')
+    # #AUFG. 5: Test von acDecrypt mit aufgabenstellung
+    # teststring = 'IVYNTWXAY'
+    # print('Testen von acDEcrypt mit : ' + teststring)
+    # print('Ergebnis: ' + acDecrypt(a,b,teststring))
+    # print('-----------------------------------------')
+    # #AUFG. 6: Test von acEncrypt und acDecrypt mit hilfsfunktion key_help:
+    # #A:
+    # teststring = 'strenggeheim'
+    # print('Testen von acEncrypt mit : ' + teststring)
+    # a,b=keyHelp('db')
+    # print('Ergebnis: ' + acEncrypt(a,b,teststring))
+    # print('-----------------------------------------')
+    # #B:
+    # teststring = 'IFFYVQMJYFFDQ'
+    # print('Testen von acDecrypt mit : ' + teststring)
+    # a,b=keyHelp('pi')
+    # print('Ergebnis: ' + acDecrypt(a,b,teststring))
+    # print('-----------------------------------------')
+    # #AUFG. 14: Test von computeKeyPairs mit Aufgabenstellung:
+    # testlist = [13,4,19]
+    # print('Testen von computeKeyPairs mit : ')
+    # print(testlist)
+    # printlist = ab.computeKeyPairs(testlist)
+    # print('Ergebnis: ')
+    # print(printlist)
+    # print('-----------------------------------------')
+    # print('-----------------------------------------')
+    # #--ANDERE_TESTS:--
+    # #Test von decode mit schwerem String:
+    # print('Test von "decode" mit: ')
+    # testschwer = '# `P Ü h ||.R{ h'
+    # print(testschwer)
+    # print(decode(testschwer))
+    # print('-----------------------------------------')
 
 
 #Testen ob als skript gestartet:
