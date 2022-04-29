@@ -72,7 +72,6 @@ def analyzeCipherText(cypher_text, char_pairs):
         b = (cE - (4 * a))%26
         if gcd(a,26) != 1 or b > 26:
             print("scheisse geht nicht (" + str(a) + "," + str(b) + ")")
-            continue
         else:
             plain_text = ac.acDecrypt(a, b, cypher_text)
             print(plain_text[:50])
