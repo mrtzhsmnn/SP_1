@@ -70,6 +70,9 @@ def analyzeCipherText(cipher_text, char_pairs):
     for cE, cN in char_pairs:
         a = (3 * (cE - cN)) % 26
         b = (cE - (4 * a)) % 26
+        print("cE:", cE, "cN:", cN)
+        print("a:", a, "b:", b)
+        print('Ergebnis: ')
         plain_text = ac.acDecrypt(a, b, cipher_text)
         print(plain_text)
         # if gcd(a,26) != 1:
