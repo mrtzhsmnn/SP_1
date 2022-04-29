@@ -192,7 +192,7 @@ def main():
     char_pairs = ab.computeKeyPairs(most_frequent)
     print('Zahlenpaare: ')
     print(char_pairs)
-    extexttest = ab.analyzeCypherText(extextcipher, char_pairs)
+    extexttest = ab.analyzeCipherText(extextcipher, char_pairs)
     print('Ergebnis: ')
     print(extexttest)
     print('-----------------------------------------')

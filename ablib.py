@@ -27,10 +27,8 @@ from math import gcd
     VARIABELN:
         "":
             
-""" 
+"""
 
-
-#Hier kommen aufgabe 11, 12, 13, 14, 15 hinein
 
 def computeFrequencyTable(char_list):
     # Erstelle leeres Dictionary
@@ -48,7 +46,8 @@ def printFrequencyTable(freq_table):
 
 def computeMostFrequentChars(freq_table, n):
 
-    most_frequent = Counter(freq_table).most_common(n) # most_common() gibt die n häufigsten Werte zurück, allerdings nur als Tupel
+    most_frequent = Counter(freq_table).most_common(n) #TODO: .most_common durch eigene Funktion ersetzen
+    # most_common() gibt die n häufigsten Werte zurück, allerdings nur als Tupel
     return [i[0] for i in most_frequent] # Tupel herausfiltern (i[0]) und nur die Zahlen zurückgeben
 
 
@@ -67,7 +66,7 @@ def computeKeyPairs(char_list):
                 char_pairs.append((a,b))
     return char_pairs
 
-def analyzeCypherText(cypher_text, char_pairs):
+def analyzeCipherText(cypher_text, char_pairs):
     for cE, cN in char_pairs:
         a = (3 * (cE - cN))%26
         b = (cE - (4 * a))%26
@@ -79,7 +78,7 @@ def analyzeCypherText(cypher_text, char_pairs):
             print(plain_text[:50])
     return print("fertig")
     
-    # entschlüssle text mit gefunden keys
+    # entschlüssle text mit gefundenen keys
     
 # Erklärung zu char_pairs: Liste mit den Buchstaben in Form von Zahlen (0-25) und deren Häufigkeit im deutschen Alphabet.
 
