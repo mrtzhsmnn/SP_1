@@ -46,7 +46,8 @@ def printFrequencyTable(freq_table):
 
 def computeMostFrequentChars(freq_table, n):
 
-    most_frequent = Counter(freq_table).most_common(n) #TODO: .most_common durch eigene Funktion ersetzen
+    most_frequent = Counter(freq_table).most_common(n) #TODO: .most_common eventuell durch eigene Funktion ersetzen
+    #TODO: testen ob n = 2 die Funktion zerhaut, falls ja: Korrektur!
     # most_common() gibt die n häufigsten Werte zurück, allerdings nur als Tupel
     return [i[0] for i in most_frequent] # Tupel herausfiltern (i[0]) und nur die Zahlen zurückgeben
 
@@ -77,7 +78,8 @@ def analyzeCipherText(cipher_text, char_pairs):
             print("a:", a, "b:", b)
             print('Mögliches Ergebnis: ')
             plain_text = ac.acDecrypt(a, b, cipher_text)
-            print(plain_text[:50])
+            # gib die ersten 50 Zeichen von plain_text aus
+            print(plain_text)
             print('\n')
         # if gcd(a,26) != 1:
         #     print("scheisse geht nicht (" + str(a) + "," + str(b) + ")")

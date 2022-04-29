@@ -200,7 +200,7 @@ def main():
     print(freq_table)
     print('Frequenztabelle (mit buchstaben): ')
     ab.printFrequencyTable(freq_table)
-    most_frequent = ab.computeMostFrequentChars(freq_table, 4)
+    most_frequent = ab.computeMostFrequentChars(freq_table, 2)
     print('Häufigste Zahlen: ')
     print(most_frequent)
     char_pairs = ab.computeKeyPairs(most_frequent)
