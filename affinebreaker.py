@@ -13,6 +13,7 @@ for line in lines:
     liste.append(line)
     
 freq_table=ab.computeFrequencyTable(liste)
+print(freq_table)
 ab.printFrequencyTable(freq_table)
 ab.computeMostFrequentChars(freq_table,n=6)
 ab.computeKeyPairs(liste)
