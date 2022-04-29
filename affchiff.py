@@ -177,20 +177,22 @@ def exGCD(x, y):
 def main():
     #--TESTS_AUFGABENSTELLUNG:--
     #AUFG. 15: Test von analyzeCipherTexte
-    extext = "herrpimmelberger"
-    extextcipher = acEncrypt(1, 3, extext)
+    #Beispieltext aus Aufgabe 15, verschlüsselt mit (h,i)
+    extextcipher = "VQUYTTQLUWRQTTHUQGFUQLDUHGWRNEUGGUNELSGDUHTYRHULXUQVQUGUMDUHTYRHULCQHVVUHONYHFUBFXEWRGFYXUTEUHXEWRGFYXULYWRUQLUHXUGFQMMFULMYFRUMYFQGWRULTKHMUNDUHGWRNEUGGUNFVQUYTTQLUWRQTTHUNYUGGFGQWRZCYHKRLUSHKUGZUHULYETCYLVXUHUWRLULVYTEUHQGFGQUYNNUHVQLSGLQWRFXUGKLVUHGGQWRUHUQLUHGUQFGSQXFUGLEHUQLUXUSHULZFUYLZYRNSURUQMUHGWRNEUGGUNGKVYGGVQUGUYNNUVEHWRJHKXQUHFCUHVULOKULLULYLVUHUHGUQFGOYLLVUHSURUQMFUBFULFGWRNEUGGUNFCUHVULGKXYNVVQUDUHGWRNEUGGUNELSDKLLEHZCUQZUQWRULXUOYLLFQGF"
     print('Testen von analyzeCipherText')
     print(extextcipher)
+    # Text in Zahlen umwandeln (muss im Test gemacht werden, weil in der Aufgabe Zahlen in char_list erwartet werden, keine Buchstaben)
+    extextcipher = decode(extextcipher)
     freq_table = ab.computeFrequencyTable(extextcipher)
     print('Frequenztabelle: ')
     print(freq_table)
-    most_frequent = ab.computeMostFrequentChars(freq_table, 2)
+    most_frequent = ab.computeMostFrequentChars(freq_table, 5)
     print('Häufigste Zahlen: ')
     print(most_frequent)
     char_pairs = ab.computeKeyPairs(most_frequent)
     print('Zahlenpaare: ')
     print(char_pairs)
-    extexttest = ab.analyzeCypherText(extextcipher, char_pairs)
+    extexttest = ab.analyzeCipherText(extextcipher, char_pairs)
     print('Ergebnis: ')
     print(extexttest)
     print('-----------------------------------------')
