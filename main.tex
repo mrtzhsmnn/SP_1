@@ -1,0 +1,96 @@
+\documentclass[12pt]{article}
+\parindent0em
+\parskip 1ex plus 0.4ex minus 0.4ex
+
+\usepackage[a4paper,vmargin=30mm,hmargin=25mm]{geometry}
+\usepackage{polyglossia}
+\setdefaultlanguage{german}
+\usepackage{fontspec}
+\usepackage{lipsum}
+\usepackage{xcolor}
+\usepackage{listings}
+\usepackage{amsfonts}
+
+\definecolor{lstbackground}{rgb}{0.95,0.95,1}      % hellgruener Rahmen
+\lstset{language=Python}
+
+\lstset{
+  basicstyle=\small\ttfamily,
+  backgroundcolor=\color{lstbackground},
+  keywordstyle=\bfseries\ttfamily\color{blue},
+  stringstyle=\color{orange!50!black}\ttfamily,
+  commentstyle=\color{gray}\ttfamily,
+  showstringspaces=false,
+  flexiblecolumns=false,
+  tabsize=4,
+  numbers=left,
+  numberstyle=\tiny,
+  numberblanklines=true,
+  stepnumber=1,
+  numbersep=10pt,
+  xleftmargin=15pt,
+  literate=%
+  {Ã–}{{\"O}}1
+  {Ã„}{{\"A}}1
+  {Ãœ}{{\"U}}1
+  {ÃŸ}{{\ss}}1
+  {Ã¼}{{\"u}}1
+  {Ã¤}{{\"a}}1
+  {Ã¶}{{\"o}}1
+  {~}{{\textasciitilde}}1
+}
+
+\begin{document}
+
+\begin{center}
+  \textbf{\LARGE Sichere Programmierung} \\[1ex]%
+  \textbf{\Large Projekt 1}\\[2ex] %
+  Max Mustermann \\ %
+  (12345) \\ %
+  Sabine Musterfrau \\ %
+  (67890) \\ %
+  
+\end{center}
+
+% ****************************************************************************
+\section{Einleitung}
+% ****************************************************************************
+Meine Oma fährt Motorrad.
+\lipsum[1]
+
+% ----------------------------------------------------------------------------
+\subsection{Unterpunkt 1}
+% ----------------------------------------------------------------------------
+\section{Code}
+\subsection{Bibliothek - Aclib.py}
+\subsubsection{Decode - Funktion}
+Da zur Implementierung des affinen Chiffres die Umwandlung von Text in Zahlen innerhalb $\mathbb{Z}_{26}$ häufig benötigt wird war die erste imple
+
+\begin{lstlisting}
+def decode(text):
+    retlist = []
+    textfilt = ''
+    text.encode("ascii","ignore")
+    text = text.casefold()
+    for x in text:
+        if (ord(x) >= 97 and ord(x) <= 122):
+            textfilt += x
+    while textfilt:
+        temp = textfilt[:1]
+        retlist.append(ord(temp) - 97)
+        textfilt = textfilt[1:]
+    return retlist
+\end{lstlisting}
+\subsection{Skript - Affinecipher.py}
+\subsection{Bibliothek - Ablib.py}
+\subsection{Skript - Affinebreaker.py}
+
+\end{document}
+
+%%% Local Variables: 
+%%% TeX-PDF-mode: t
+%%% TeX-master: t
+%%% coding: utf-8
+%%% mode: latex
+%%% TeX-engine: xetex
+%%% End: 
