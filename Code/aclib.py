@@ -39,29 +39,20 @@
 
 
 def decode(text):
-    #Liste für Rückgabe erstellen, String für gefilterten Text erstellen
+    #Liste für Rückgabe erstellen
     retlist = []
-    textfilt = ''
-    #Alle nicht Ascii-Zeichen löschen
-    text = str(text.encode("ascii","ignore"))
     #Alle Buchstaben in text klein
     text = text.casefold()
     #Nur kleine alphabetische zeichen im String belassen:
     #x ist i-ter Buchstabe aus text
     for x in text:
         #x wird in ascii interpretiert, alles was nicht kleinbuchstabe ist wird verworfen (kleinbuchstabe in ascii zw. 97-122)
-        if (ord(x) >= 97 and ord(x) <= 122):
-            #wenn kleinbuchstabe, an textfilt anhängen
-            textfilt += x
-    #While Schleife, durchläuft Code bis String leer. Interpretiere hier String als bool, wenn String leer, String = false.
-    while textfilt:
-        #kopiere ersten Buchstaben in temp
-        temp = textfilt[:1]
-        #fügt ans Ende der Liste retlist die Zahl an, ord gibt temp als ascii, ascii-wert abzuüglich 96 ist Zahl im Alphabet.
-        #Hier -97, da Zahlen nicht von 1-26 sondern von 0-25 angegeben werden sollen.
-        retlist.append(ord(temp) - 97)
-        #ersten Buchstaben von text löschen
-        textfilt = textfilt[1:]
+        temp = ord(x)
+        #temp wird in retlist gespeichert, falls temp einen Kleinbuchstaben repräsentiert.
+        if (temp >= 97 and temp <= 122):
+            #fügt ans Ende der Liste retlist die Zahl an, ord gibt temp als ascii, ascii-wert abzuüglich 96 ist Zahl im Alphabet.
+            #Hier -97, da Zahlen nicht von 1-26 sondern von 0-25 angegeben werden sollen.
+            retlist.append(temp - 97)
     #gibt retlist zurück
     return retlist
 
