@@ -43,7 +43,7 @@ def decode(text):
     retlist = []
     textfilt = ''
     #Alle nicht Ascii-Zeichen löschen
-    text = text.encode("ascii","ignore")
+    text = str(text.encode("ascii","ignore"))
     #Alle Buchstaben in text klein
     text = text.casefold()
     #Nur kleine alphabetische zeichen im String belassen:
