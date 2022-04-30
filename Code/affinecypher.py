@@ -17,17 +17,19 @@ a,b=ac.keyHelp(key) #Key wird in Keyhelp-Funktion zerlegt und in a und b gespeic
 if(mode!='e' and mode!='d'): #Prüfung ob mode gültig ist   
     print("Kein gültiger Modus!") #Fehlermeldung ausgeben
     sys.exit() #Programm beenden
+
 try: #Prüfung ob Datei existiert
     datei=open(path, "r+") #Datei öffnen und in Variable speichern
-
 except: #Wenn Datei nicht existiert
     print("Datei nicht gefunden!") #Fehlermeldung ausgeben
     sys.exit() #Programm beenden
 
+#Entscheiden welcher Modus gewählt wurde: 
 if(mode == 'e'): #Wenn mode "e" ist (verschlüsseln)
     newContent=ac.acEncrypt(a,b,datei.read()) #Neuer Inhalt der Datei mit acEncrypt
     datei.close() #Datei schließen
     if(newContent==""):
+        print("Datei ist leer!") #Hinweis ausgeben
         sys.exit() #Programm beenden    
     else:
         os.remove(path) #Datei löschen
