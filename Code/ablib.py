@@ -72,11 +72,11 @@ def analyzeCipherText(cipher_text, char_pairs):
         a = (3 * (cN - cE)) % 26
         b = (cE - (4 * a)) % 26
         if gcd(a,26) != 1 or b > 26:
-            print("uff, nicht Teilerfremd, Matheblablabla")
+            #print("Bei diesem Schlüssel ist a nicht teilerfremd zu 26!")
             continue
         else:
             print("cE:", cE, "cN:", cN)
-            print("a:", a, "b:", b)
+            print("Möglicher Schlüssel:" , "a:", a, "b:", b)
             print('Mögliches Ergebnis: ')
             plain_text = ac.acDecrypt(a, b, cipher_text)
             # gib die ersten 50 Zeichen von plain_text aus
