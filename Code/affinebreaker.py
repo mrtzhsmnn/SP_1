@@ -4,13 +4,10 @@ import aclib as ac
 import sys
 
 try: 
-    datei=open(sys.argv[1],"r") #Datei öffnen und in Variable speichern
+    datei=open(sys.argv[1],"r+") #Datei öffnen und in Variable speichern
     if(datei.read()==""): #Prüfung ob Datei leer ist
         print("Datei ist leer!") #Fehlermeldung ausgeben
         sys.exit() #Programm beenden
-    else:
-        print(datei.read()) #Inhalt der Datei ausgeben
-        cipher_text=datei.read() #Inhalt der Datei in Variable speichern
     datei.close() #Datei schließen
 except IndexError: #Error handling
     print("Keine Datei angegeben!")  #Fehlermeldung, wenn zu wenige Parameter angegeben wurden.
@@ -19,7 +16,9 @@ except FileNotFoundError: #Error handling
     print("Datei existiert nicht!") #Fehlermeldung, wenn Datei nicht existiert
     sys.exit() #Programm beenden
 
-print(cipher_text) #Inhalt der Datei ausgeben
+datei=open(sys.argv[1],"r+") #Datei öffnen und in Variable speichern
+cipher_text=datei.read() #Inhalt der Datei in Variable speichern
+
 
 decoded_content=ac.decode(cipher_text) #Inhalt der Datei mit decode-Funktion konvertieren um anschließend computeFrequencyTable-Funktion mit Zahlen aufrufen zu können
 freq_table=ab.computeFrequencyTable(decoded_content) #Frequenztabelle erstellen mit computeFrequencyTable-Funktion aus ablib 
