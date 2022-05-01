@@ -13,29 +13,20 @@ import ablib as ab
 
 
 def decode(text):
-    #Liste für Rückgabe erstellen, String für gefilterten Text erstellen
+    #Liste für Rückgabe erstellen
     retlist = []
-    textfilt = ''
-    #Alle nicht Ascii-Zeichen löschen
-    text.encode("ascii","ignore")
     #Alle Buchstaben in text klein
     text = text.casefold()
     #Nur kleine alphabetische zeichen im String belassen:
     #x ist i-ter Buchstabe aus text
     for x in text:
         #x wird in ascii interpretiert, alles was nicht kleinbuchstabe ist wird verworfen (kleinbuchstabe in ascii zw. 97-122)
-        if (ord(x) >= 97 and ord(x) <= 122):
-            #wenn kleinbuchstabe, an textfilt anhängen
-            textfilt += x
-    #While Schleife, durchläuft Code bis String leer. Interpretiere hier String als bool, wenn String leer, String = false.
-    while textfilt:
-        #kopiere ersten Buchstaben in temp
-        temp = textfilt[:1]
-        #fügt ans Ende der Liste retlist die Zahl an, ord gibt temp als ascii, ascii-wert abzuüglich 96 ist Zahl im Alphabet.
-        #Hier -97, da Zahlen nicht von 1-26 sondern von 0-25 angegeben werden sollen.
-        retlist.append(ord(temp) - 97)
-        #ersten Buchstaben von text löschen
-        textfilt = textfilt[1:]
+        temp = ord(x)
+        #temp wird in retlist gespeichert, falls temp einen Kleinbuchstaben repräsentiert.
+        if (temp >= 97 and temp <= 122):
+            #fügt ans Ende der Liste retlist die Zahl an, ord gibt temp als ascii, ascii-wert abzuüglich 96 ist Zahl im Alphabet.
+            #Hier -97, da Zahlen nicht von 1-26 sondern von 0-25 angegeben werden sollen.
+            retlist.append(temp - 97)
     #gibt retlist zurück
     return retlist
 
@@ -209,59 +200,59 @@ def main():
     print('Ergebnis: ')
     ab.analyzeCipherText(extextcipher, char_pairs)
     print('-----------------------------------------')
-    # #AUFG. 1: Test von decode wie in Aufgabenstellung:
-    # print('Test von "decode" mit: ')
-    # test = 'Hallo Welt!'
-    # print(test)
-    # print(decode(test))
-    # print('-----------------------------------------')
-    # #AUFG. 2: Test von encode mit Aufgabenstellung:
-    # char_list = [13, 0, 2, 7, 17, 8, 2, 7, 19]
-    # print('Test von "encode" mit: ')
-    # print(char_list)
-    # print('Ergebnis: ' + encode(char_list))
-    # print('-----------------------------------------')
-    # #AUFG. 4: Test von acEncrypt mit aufgabenstellung
-    # teststring = 'botschaft'
-    # print('Testen von acEncrypt mit : ' + teststring)
-    # a = 11 
-    # b = 23
-    # print('Ergebnis: ' + acEncrypt(a,b,teststring))
-    # print('-----------------------------------------')
-    # #AUFG. 5: Test von acDecrypt mit aufgabenstellung
-    # teststring = 'IVYNTWXAY'
-    # print('Testen von acDEcrypt mit : ' + teststring)
-    # print('Ergebnis: ' + acDecrypt(a,b,teststring))
-    # print('-----------------------------------------')
-    # #AUFG. 6: Test von acEncrypt und acDecrypt mit hilfsfunktion key_help:
-    # #A:
-    # teststring = 'strenggeheim'
-    # print('Testen von acEncrypt mit : ' + teststring)
-    # a,b=keyHelp('db')
-    # print('Ergebnis: ' + acEncrypt(a,b,teststring))
-    # print('-----------------------------------------')
-    # #B:
-    # teststring = 'IFFYVQMJYFFDQ'
-    # print('Testen von acDecrypt mit : ' + teststring)
-    # a,b=keyHelp('pi')
-    # print('Ergebnis: ' + acDecrypt(a,b,teststring))
-    # print('-----------------------------------------')
-    # #AUFG. 14: Test von computeKeyPairs mit Aufgabenstellung:
-    # testlist = [13,4,19]
-    # print('Testen von computeKeyPairs mit : ')
-    # print(testlist)
-    # printlist = ab.computeKeyPairs(testlist)
-    # print('Ergebnis: ')
-    # print(printlist)
-    # print('-----------------------------------------')
-    # print('-----------------------------------------')
-    # #--ANDERE_TESTS:--
-    # #Test von decode mit schwerem String:
-    # print('Test von "decode" mit: ')
-    # testschwer = '# `P Ü h ||.R{ h'
-    # print(testschwer)
-    # print(decode(testschwer))
-    # print('-----------------------------------------')
+    #AUFG. 1: Test von decode wie in Aufgabenstellung:
+    print('Test von "decode" mit: ')
+    test = 'Hallo Welt!'
+    print(test)
+    print(decode(test))
+    print('-----------------------------------------')
+    #AUFG. 2: Test von encode mit Aufgabenstellung:
+    char_list = [13, 0, 2, 7, 17, 8, 2, 7, 19]
+    print('Test von "encode" mit: ')
+    print(char_list)
+    print('Ergebnis: ' + encode(char_list))
+    print('-----------------------------------------')
+    #AUFG. 4: Test von acEncrypt mit aufgabenstellung
+    teststring = 'botschaft'
+    print('Testen von acEncrypt mit : ' + teststring)
+    a = 11 
+    b = 23
+    print('Ergebnis: ' + acEncrypt(a,b,teststring))
+    print('-----------------------------------------')
+    #AUFG. 5: Test von acDecrypt mit aufgabenstellung
+    teststring = 'IVYNTWXAY'
+    print('Testen von acDEcrypt mit : ' + teststring)
+    print('Ergebnis: ' + acDecrypt(a,b,teststring))
+    print('-----------------------------------------')
+    #AUFG. 6: Test von acEncrypt und acDecrypt mit hilfsfunktion key_help:
+    #A:
+    teststring = 'strenggeheim'
+    print('Testen von acEncrypt mit : ' + teststring)
+    a,b=keyHelp('db')
+    print('Ergebnis: ' + acEncrypt(a,b,teststring))
+    print('-----------------------------------------')
+    #B:
+    teststring = 'IFFYVQMJYFFDQ'
+    print('Testen von acDecrypt mit : ' + teststring)
+    a,b=keyHelp('pi')
+    print('Ergebnis: ' + acDecrypt(a,b,teststring))
+    print('-----------------------------------------')
+    #AUFG. 14: Test von computeKeyPairs mit Aufgabenstellung:
+    testlist = [13,4,19]
+    print('Testen von computeKeyPairs mit : ')
+    print(testlist)
+    printlist = ab.computeKeyPairs(testlist)
+    print('Ergebnis: ')
+    print(printlist)
+    print('-----------------------------------------')
+    print('-----------------------------------------')
+    #--ANDERE_TESTS:--
+    #Test von decode mit schwerem String:
+    print('Test von "decode" mit: ')
+    testschwer = '# `P Ü h ||.R{ h'
+    print(testschwer)
+    print(decode(testschwer))
+    print('-----------------------------------------')
 
 
 #Testen ob als skript gestartet:
