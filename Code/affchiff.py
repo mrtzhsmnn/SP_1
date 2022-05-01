@@ -68,7 +68,7 @@ key_table = {
 
 
 #Funktion "acEncrypt":
-#   IN: Erwartet Schlüssel a, und b, beide müssen in key_table sein.
+#   IN: Erwartet Schlüssel a, und b, a muss in key_table sein b lediglich in Z26.
 #       Erwartet String plain_text mit dem zu verschlüsselnden Text.
 #   Verschlüsselt plain_text mit dem Schlüsselpaar a & b.
 #   Fehler, falls mind. einer der Schlüssel ungültig. => Fehlermeldung wird ausgegeben, leerer String zurückgegeben.
@@ -79,7 +79,7 @@ def acEncrypt(a, b , plain_text):
     #Liste um Zahlen zur Manipulation zu speichern. i für counter bei for-Schleife
     worklist = []
     i = 0
-    #Prüfen, ob beide Keys in key_table liegen (nur dann hat man gültiges Schlüsselpaar).
+    #Prüfen, ob a in key_table liegt und b in Z26 (nur dann hat man gültiges Schlüsselpaar).
     if not(a in key_table and (b<26 and b>=0)):
         #Wenn einer der beiden Keys ungültig, Fehlermeldung ausgeben und leeren String zurückgeben.
         print('FEHLER: mindestens einer der Keys im KEYPAIR ist ungültig!')
@@ -99,7 +99,7 @@ def acEncrypt(a, b , plain_text):
    
 
 #Funktion "acDecrypt":
-#   IN: Erwartet Schlüssel a, und b, beide müssen in key_table sein.
+#   IN: Erwartet Schlüssel a, und b, a muss in key_table sein b lediglich in Z26.
 #       Erwartet String cipher_text mit dem zu entschlüsselnden Text.
 #   Entschlüsselt cipher_text mit dem Schlüsselpaar a & b.
 #   Fehler, falls mind. einer der Schlüssel ungültig. => Fehlermeldung wird ausgegeben, leerer String zurückgegeben.
@@ -108,7 +108,7 @@ def acDecrypt(a, b, cipher_text):
     #Liste um Zahlen zur Manipulation zu speichern. i für counter bei for-Schleife
     worklist = []
     i = 0
-    #Prüfen, ob beide Keys in key_table liegen (nur dann hat man gültiges Schlüsselpaar).
+    #Prüfen, ob a in key_table liegt und b in Z26 (nur dann hat man gültiges Schlüsselpaar).
     if not(a in key_table and (b<26 and b>=0)):
         #Wenn einer der beiden Keys ungültig, Fehlermeldung ausgeben und leeren String zurückgeben.
         print('FEHLER: mindestens einer der Keys im KEYPAIR ist ungültig!')
