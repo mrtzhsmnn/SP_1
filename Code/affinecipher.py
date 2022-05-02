@@ -13,29 +13,32 @@ try:
         print("Kein gültiger Modus!") #Fehlermeldung ausgeben
         sys.exit() #Programm beenden
     if(datei.read()==""):
-        print("Datei ist leer!")
+        print("Datei ist leer!") #Wenn Datei leer ist Hinweis ausgeben und anschließend Programm beenden
         sys.exit()
-except IndexError: #Error handling
+except IndexError: #Error handling: Wenn zu wenige Parameter angegeben wurden
     print("Zu wenige Parameter angegeben!")  #Fehlermeldung, wenn zu wenige Parameter angegeben wurden.
     sys.exit() #Programm beenden 
-except FileNotFoundError: #Error handling
+except FileNotFoundError: #Error handling: Wenn Datei nicht existiert
     print("Datei existiert nicht!") #Fehlermeldung, wenn Datei nicht existiert
     sys.exit() #Programm beenden
 datei.close() #Datei schließen
-a,b=ac.keyHelp(key) #Key wird in Keyhelp-Funktion zerlegt und in a und b gespeichert
+
 datei=open(path,"r+") #Datei öffnen und in Variable speichern
+
+a,b=ac.keyHelp(key) #Key wird in Keyhelp-Funktion zerlegt und in a und b gespeichert
+
 #Entscheiden welcher Modus gewählt wurde: 
 if(mode == 'e'): #Wenn mode "e" ist (verschlüsseln)
-    newContent=ac.acEncrypt(a,b,datei.read()) #Neuer Inhalt der Datei mit acEncrypt
-    datei.close() #Datei schließen
-    os.remove(path) #Datei löschen
+    newContent=ac.acEncrypt(a,b,datei.read()) #Neuer Inhalt der Datei mit acEncrypt verschlüsselt, hierbei wird auch das Schlüsselpaar überprüft
+    datei.close() #Datei schließen um sie anschließend löschen zu können
+    os.remove(path) #Datei löschen um sie neu zu erstellen, um whitespaces zu verhindern
     datei=open(path, "w+") #Datei wird neu erstellt und geöffnet, um diese befüllen zu können
     datei.write(newContent) #verschlüsselter Inhalt wird in Datei geschrieben
     print("Datei wurde verschlüsselt!") #Meldung ausgeben
 elif(mode == 'd'): #Wenn mode "d" ist (entschlüsseln)
-    newContent=ac.acDecrypt(a,b,datei.read()) #Neuer Inhalt der Datei mit acDecrypt
-    datei.close() #Datei schließen
-    os.remove(path) #Datei löschen  
+    newContent=ac.acDecrypt(a,b,datei.read()) #Neuer Inhalt der Datei mit acDecrypt entschüsselt, und Schlüsselpaare überprüft
+    datei.close() #Datei schließen um sie anschließend löschen zu können
+    os.remove(path) #Datei löschen um beim befüllen whitespaces zu verhindern   
     datei=open(path, "w+") #Datei wird neu erstellt und geöffnet, um diese befüllen zu können
     datei.write(newContent) #entschlüsselter Inhalt wird in Datei geschrieben
     print("Datei wurde entschlüsselt!") #Meldung ausgeben
