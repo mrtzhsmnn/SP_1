@@ -21,9 +21,9 @@ except IndexError: #Error handling
 except FileNotFoundError: #Error handling
     print("Datei existiert nicht!") #Fehlermeldung, wenn Datei nicht existiert
     sys.exit() #Programm beenden
-
+datei.close() #Datei schließen
 a,b=ac.keyHelp(key) #Key wird in Keyhelp-Funktion zerlegt und in a und b gespeichert
-
+datei=open(path,"r+") #Datei öffnen und in Variable speichern
 #Entscheiden welcher Modus gewählt wurde: 
 if(mode == 'e'): #Wenn mode "e" ist (verschlüsseln)
     newContent=ac.acEncrypt(a,b,datei.read()) #Neuer Inhalt der Datei mit acEncrypt
