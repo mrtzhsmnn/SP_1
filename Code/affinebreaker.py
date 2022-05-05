@@ -23,7 +23,7 @@ freq_table=ab.computeFrequencyTable(decoded_content) #Frequenztabelle erstellen 
 print("Häufigkeitstabelle:")
 ab.printFrequencyTable(freq_table) #Häufigkeitstabelle ausgeben
 
-a=ab.computeMostFrequentChars(freq_table,4) #4 häufigsten Zeichen ermitteln mit computeMostFrequentChars-Funktion aus ablib
+a=ab.computeMostFrequentChars(freq_table,3) #3 häufigsten Zeichen ermitteln mit computeMostFrequentChars-Funktion aus ablib
 key_pairs=ab.computeKeyPairs(a) #Schlüsselpaare erstellen
 print("Keypairs:" ,key_pairs) #Schlüsselpaare ausgeben
 
