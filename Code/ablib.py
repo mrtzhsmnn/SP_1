@@ -75,24 +75,9 @@ def analyzeCipherText(cipher_text, char_pairs):
             #print("Bei diesem Schlüssel ist a nicht teilerfremd zu 26!")
             continue
         else:
-            print("cE:", cE, "cN:", cN)
             print("Möglicher Schlüssel:" , "a:", a, "b:", b)
             print('Mögliches Ergebnis: ')
             plain_text = ac.acDecrypt(a, b, cipher_text)
             # gib die ersten 50 Zeichen von plain_text aus
-            print(plain_text[:50])
-            print('\n')
-        # if gcd(a,26) != 1:
-        #     print("scheisse geht nicht (" + str(a) + "," + str(b) + ")")
-        # else:
-        #     plain_text = ac.acDecrypt(a, b, cipher_text)
-        #     print(plain_text[:50])
-    return print("fertig")
+    return print(plain_text[:50])
     
-    # entschlüssle text mit gefundenen keys
-    
-# Erklärung zu char_pairs: Liste mit den Buchstaben in Form von Zahlen (0-25) und deren Häufigkeit im deutschen Alphabet.
-
-# bsp text:
-# VQUYTTQLUWRQTTHUQGFUQLDUHGWRNEUGGUNELSGDUHTYRHULXUQVQUGUMDUHTYRHULCQHVVUHONYHFUBFXEWRGFYXUTEUHXEWRGFYXULYWRUQLUHXUGFQMMFULMYFRUMYFQGWRULTKHMUNDUHGWRNEUGGUNFVQUYTTQLUWRQTTHUNYUGGFGQWRZCYHKRLUSHKUGZUHULYETCYLVXUHUWRLULVYTEUHQGFGQUYNNUHVQLSGLQWRFXUGKLVUHGGQWRUHUQLUHGUQFGSQXFUGLEHUQLUXUSHULZFUYLZYRNSURUQMUHGWRNEUGGUNGKVYGGVQUGUYNNUVEHWRJHKXQUHFCUHVULOKULLULYLVUHUHGUQFGOYLLVUHSURUQMFUBFULFGWRNEUGGUNFCUHVULGKXYNVVQUDUHGWRNEUGGUNELSDKLLEHZCUQZUQWRULXUOYLLFQGF
-# key: h, i
