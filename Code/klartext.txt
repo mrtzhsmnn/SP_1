@@ -1,1 +1,1 @@
-Dies ist der Klartext, der verschluesselt werden soll!
+Dies ist der Satz, der verschlüsselt werden soll! Dabei Sollensonderzeichen wie ?! oder $ und Zahlen wie 1 93 2 1 entfernt werden!

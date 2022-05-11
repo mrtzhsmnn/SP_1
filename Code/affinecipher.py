@@ -32,14 +32,14 @@ if(mode == 'e'): #Wenn mode "e" ist (verschlüsseln)
     os.remove(path) #Datei löschen um sie neu zu erstellen, um whitespaces zu verhindern
     datei=open(path, "w+") #Datei wird neu erstellt und geöffnet, um diese befüllen zu können
     datei.write(newContent) #verschlüsselter Inhalt wird in Datei geschrieben
-    print("Datei wurde verschlüsselt:", newContent) #Meldung ausgeben
+    print("Datei wurde verschlüsselt!") #Meldung ausgeben
 elif(mode == 'd'): #Wenn mode "d" ist (entschlüsseln)
     newContent=ac.acDecrypt(a,b,oldContent) #Neuer Inhalt der Datei mit acDecrypt entschüsselt, und Schlüsselpaare überprüft
     datei.close() #Datei schließen um sie anschließend löschen zu können
     os.remove(path) #Datei löschen um beim befüllen whitespaces zu verhindern   
     datei=open(path, "w+") #Datei wird neu erstellt und geöffnet, um diese befüllen zu können
     datei.write(newContent) #entschlüsselter Inhalt wird in Datei geschrieben
-    print("Datei wurde entschlüsselt:", newContent) #Meldung ausgeben
+    print("Datei wurde entschlüsselt!") #Meldung ausgeben
 datei.close() #Datei schließen
 
 #Die Datei ist nun entweder verschlüsselt oder entschlüsselt und kann im nächsten Schritt ausgegeben werden 
