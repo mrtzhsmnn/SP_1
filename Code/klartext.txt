@@ -1,1 +1,1 @@
-Dies ist der Satz, der verschlüsselt werden soll! Dabei Sollensonderzeichen wie ?! oder $ und Zahlen wie 1 93 2 1 entfernt werden!
+Dies ist der Satz, der verschlüsselt werden soll! Dabei sollen Sonderzeichen wie ?! oder $ und Zahlen wie 1 93 2 1 entfernt werden!
