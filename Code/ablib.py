@@ -65,5 +65,5 @@ def analyzeCipherText(cipher_text, char_pairs):
             # entschlüssle cipher_text mit gefundenem Schlüsselpaar
             plain_text = ac.acDecrypt(a, b, cipher_text)
             # gib die ersten 50 Zeichen von plain_text aus
-    return print(plain_text[:50])
+            return print(plain_text[:50])
     
